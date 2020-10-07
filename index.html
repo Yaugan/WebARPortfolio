@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+  <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script>
+  <body style="margin : 0px; overflow: hidden;">
+    <a-scene
+      id="scene"
+      cursor="fuse: false; rayOrigin: mouse;"
+      embedded
+      arjs="debugUIEnabled: false; trackingMethod: best; sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+    >
+      <a-marker
+        type="pattern"
+        url="https://cdn.glitch.com/81523e55-2125-4d8e-870e-4dc99ab26a87%2Fportfolio-marker.patt"
+      >
+        <a-entity scale="1 1 1" rotation="0 0 0">
+          <a-image
+            id="Github-Image"
+            geometry="primitive: plane"
+            src="https://cdn.glitch.com/81523e55-2125-4d8e-870e-4dc99ab26a87%2Fgit.png"
+            rotation="-90 0 0"
+            width="1"
+            height="1"
+            position="-2.4 0 0"
+          ></a-image>
+
+          <a-image
+            id="Instagram-Image"
+            geometry="primitive: plane"
+            src="https://cdn.glitch.com/81523e55-2125-4d8e-870e-4dc99ab26a87%2F1.png"
+            rotation="-90 0 0"
+            width="1"
+            height="1"
+            position="-1.2 0 0"
+          ></a-image>
+
+          <a-image
+            id="Text-Image"
+            geometry="primitive: plane"
+            src="https://cdn.glitch.com/81523e55-2125-4d8e-870e-4dc99ab26a87%2F3.png"
+            rotation="-90 0 0"
+            width="1"
+            height="1"
+            position="0 0 0"
+          >
+            <a-text
+              id="text1"
+              value="Hello Everyone !!"
+              color=" #e75480"
+              width="5%"
+              align="center"
+              position="0 1 0"
+              visible="false"
+            ></a-text>
+
+            <a-text
+              id="text2"
+              value="I am an AR/VR Evangelist trying to build an AR portfolio using js."
+              color=" #e75480"
+              width="3%"
+              align="center"
+              position="0 1 0"
+              visible="false"
+            ></a-text>
+
+            <a-text
+              id="text3"
+              value="I am pretty excited and have worked hard to finally showcase my skills."
+              position="0 1 0"
+              width="4%"
+              color=" #e75480"
+              align="center"
+              visible="false"
+            ></a-text>
+
+            <a-text
+              id="text4"
+              value="It was a great experience working on AR in web."
+              position="0 1 0"
+              color=" #e75480"
+              width="4%"
+              align="center"
+              visible="false"
+            ></a-text>
+
+            <a-text
+              id="text5"
+              value="I am Open to new opportunities and would love to be a part of an organisation."
+              position="0 1 0"
+              color=" #e75480"
+              width="4%"
+              align="center"
+              visible="false"
+            ></a-text>
+
+            <a-text
+              id="text6"
+              value="Feel free to connect me over these social handles."
+              position="0 1 0"
+              color=" #e75480"
+              width="5%"
+              align="center"
+              visible="false"
+            ></a-text>
+
+            <a-text
+              id="text7"
+              value="Just click on the social handle, it will redirect you to my profile. Let's Connect !!"
+              position="0 1 0"
+              color=" #e75480"
+              width="4%"
+              align="center"
+              visible="false"
+            ></a-text>
+          </a-image>
+
+          <a-image
+            id="LinkedIn-Image"
+            geometry="primitive: plane"
+            src="https://cdn.glitch.com/81523e55-2125-4d8e-870e-4dc99ab26a87%2FLinkedin.png"
+            rotation="-90 0 0"
+            width="1"
+            height="1"
+            position="1.2 0 0"
+          ></a-image>
+
+          <a-image
+            id="Dialer-Image"
+            geometry="primitive: plane"
+            src="https://cdn.glitch.com/81523e55-2125-4d8e-870e-4dc99ab26a87%2FDialer.png"
+            rotation="-90 0 0"
+            width="1"
+            height="1"
+            position="2.4 0 0"
+          ></a-image>
+        </a-entity>
+      </a-marker>
+      <a-entity camera mouse-cursor position="0 0 0"></a-entity>
+    </a-scene>
+
+    <script>
+      let allow_clicks = false;
+      var count = 0;
+
+      document.querySelector("#scene").addEventListener("markerFound", evt => {
+        allow_clicks = true;
+      });
+
+      document.querySelector("#scene").addEventListener("markerLost", evt => {
+        allow_clicks = false;
+      });
+
+      document
+        .querySelector("#LinkedIn-Image")
+        .addEventListener("click", evt => {
+          if (allow_clicks) {
+            window.location =
+              "https://www.linkedin.com/in/ekansh-mittal-929297ba/";
+          }
+        });
+
+      document
+        .querySelector("#Instagram-Image")
+        .addEventListener("click", evt => {
+          if (allow_clicks) {
+            window.location =
+              "https://www.instagram.com/the_undeviated_soul/?hl=en";
+          }
+        });
+
+      document.querySelector("#Github-Image").addEventListener("click", evt => {
+        if (allow_clicks) {
+          window.location = "https://github.com/Yaugan";
+        }
+      });
+
+      document.querySelector("#Dialer-Image").addEventListener("click", evt => {
+        if (allow_clicks) {
+          window.location = "tel: +91-9873183980";
+        }
+      });
+
+      document.querySelector("#Text-Image").addEventListener("click", evt => {
+        if (allow_clicks) {
+          count++;
+
+          if (count == 1) {
+            document.querySelector("#text1").setAttribute("visible", true);
+          } else if (count == 2) {
+            document.querySelector("#text1").setAttribute("visible", false);
+            document.querySelector("#text2").setAttribute("visible", true);
+          } else if (count == 3) {
+            document.querySelector("#text2").setAttribute("visible", false);
+            document.querySelector("#text3").setAttribute("visible", true);
+          } else if (count == 4) {
+            document.querySelector("#text3").setAttribute("visible", false);
+            document.querySelector("#text4").setAttribute("visible", true);
+          } else if (count == 5) {
+            document.querySelector("#text4").setAttribute("visible", false);
+          } else if (count == 6) {
+          } else if (count == 7) {
+            document.querySelector("#text5").setAttribute("visible", true);
+          } else if (count == 8) {
+            document.querySelector("#text5").setAttribute("visible", false);
+            document.querySelector("#text6").setAttribute("visible", true);
+          } else if (count == 9) {
+            document.querySelector("#text6").setAttribute("visible", false);
+            document.querySelector("#text7").setAttribute("visible", true);
+          } else {
+            document.querySelector("#text7").setAttribute("visible", false);
+            count = 0;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
